@@ -161,7 +161,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        mews\captcha\captchaserviceprovider::class,
+        Mews\Captcha\CaptchaServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
@@ -225,8 +226,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'captcha' => mews\captcha\Facades\captcha::class,
-        
+        'Captcha' => Mews\Captcha\Facades\Captcha::class,
+
     ],
 
 ];

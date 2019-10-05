@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -9,8 +9,8 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts --> 
-    <script src="{{ asset('js/app.js') }}"defer></script>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -33,7 +33,25 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                    @auth
+                    <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Master Data <span class="caret"></span>
+                                </a>
 
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('kategori_artikel.index') }}">{{ __('Kategori Artikel') }}</a>
+                                <a class="dropdown-item" href="{{ route('artikel.index') }}">{{ __('Artikel') }}</a>
+                                <a class="dropdown-item" href="{{ route('kategori_berita.index') }}">{{ __('Kategori Berita') }}</a>
+                                <a class="dropdown-item" href="{{ route('berita.index') }}">{{ __('Berita') }}</a>
+                                <a class="dropdown-item" href="{{ route('kategori_galeri.index') }}">{{ __('Kategori Galeri') }}</a>
+                                <a class="dropdown-item" href="{{ route('galeri.index') }}">{{ __('Galeri') }}</a>
+                                <a class="dropdown-item" href="{{ route('kategori_pengumuman.index') }}">{{ __('Kategori Pengumuman') }}</a>
+                                <a class="dropdown-item" href="{{ route('pengumuman.index') }}">{{ __('Pengumuman') }}</a>
+                                </div>
+                            </li>
+
+                    @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -76,19 +94,19 @@
             @yield('content')
         </main>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <script>
-        $ ('.btn-refresh').click(function () {
-            $.ajax({
-                type: 'GET',
-                url:'{{ url ('/refresh_captcha') }}',
-                success: function (data) {
-                    $('.captcha span').html(data);
-                }
-            });
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+    $('.btn-refresh').click(function () {
+        $.ajax({
+            type: 'GET',
+            url: '{{ url('/refresh_captcha') }}',
+            success: function (data) {
+                $('.captcha span').html(data);
+            }
         });
-    </script>
-
+    });
+</script>
 </body>
 </html>
